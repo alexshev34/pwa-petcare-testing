@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback } from "react";
 
 export const useHttp = () => {
     const [loading, setLoading] = useState(false) //процесс загрузки
@@ -14,38 +14,39 @@ export const useHttp = () => {
             const response = await fetch(url, { method, body, headers })
 
             if (response.ok) {
+                let tokens = "test";
                 // let tokens = response.headers.get('Authorization');
-                alert(response.type);
-                alert(response.headers.get('Authorization'));
+                // alert(response.type);
+                // alert(response.headers.get('Authorization'));
                 localStorage.setItem("tokens", tokens); //добавление токена  в localstorage
-                // document.location.href = "http://yandex.ru/";
+                document.location.href = "http://localhost:3000/";
 
 
-                async function testing1() {
-                    let testing1 = await fetch('http://45.86.180.111:3000/person', {
-                        method: 'GET',
-                        headers: {
-                            'authorization': localStorage.getItem('tokens')
-                        }
-                    })
-                        // .then(res => res.json())
-                        // .then(resJson => resJson['userDataId'])
-                        // .then(userId => {
-                        //     async function testing2() { 
-                        //     let testing2 = await fetch('http://79.174.13.220:8080/api/userDatas/' + userId + '/specialist');
-                        //     if(testing2.ok){
-                        //         let specialist = response.headers.get('Authorization'); //получение токена
-                        //         localStorage.setItem("specialist", specialist);
-                        //         document.location.href = "http://your-services.surge.sh"; //редирект при успешном входе
-                        //     }
-                        //     else{
-                        //         alert("Вы не исполнитель");
-                        //     }
-                        // }
-                        // testing2();
-                        // });
-                }
-                testing1();
+                // async function testing1() {
+                //     let testing1 = await fetch('http://45.86.180.111:3000/person', {
+                //         method: 'GET',
+                //         headers: {
+                //             'authorization': localStorage.getItem('tokens')
+                //         }
+                //     })
+                //         // .then(res => res.json())
+                //         // .then(resJson => resJson['userDataId'])
+                //         // .then(userId => {
+                //         //     async function testing2() { 
+                //         //     let testing2 = await fetch('http://79.174.13.220:8080/api/userDatas/' + userId + '/specialist');
+                //         //     if(testing2.ok){
+                //         //         let specialist = response.headers.get('Authorization'); //получение токена
+                //         //         localStorage.setItem("specialist", specialist);
+                //         //         document.location.href = "http://your-services.surge.sh"; //редирект при успешном входе
+                //         //     }
+                //         //     else{
+                //         //         alert("Вы не исполнитель");
+                //         //     }
+                //         // }
+                //         // testing2();
+                //         // });
+                // }
+                // testing1();
             }
             else{
                 alert("Вы еще не зарегистрированы!")

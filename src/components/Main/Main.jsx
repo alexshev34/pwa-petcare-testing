@@ -5,18 +5,24 @@ import LoginCustomer from '../Login/LoginCustomer';
 import LoginEmployee from '../Login/LoginEmployee';
 import MainPage from '../MainPage/MainPage';
 import Registration from '../Registration/Registration';
-
+import UserEmployee from '../UserEmployee/UserEmployee';
 const Main = () => {
-        return(
-            <>
-                <Switch>
-                    <Route exact path="/" component={MainPage}/>
-                    <Route exact path="/login-employee" component={LoginEmployee}/>
-                    <Route exact path="/login-customer" component={LoginCustomer}/>
-                    <Route exact path="/registration" component={Registration}/>
-                </Switch>
-            </>
+    if (localStorage.getItem('tokens')) {
+        return (
+            <UserEmployee/>
         )
+    }
+    else {
+        return (
+            <Switch>
+                <Route exact path="/" component={MainPage} />
+                <Route exact path="/login-employee" component={LoginEmployee} />
+                <Route exact path="/login-customer" component={LoginCustomer} />
+                <Route exact path="/registration" component={Registration} />
+            </Switch>
+        )
+    }
+
 }
 
 export default Main;
