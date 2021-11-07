@@ -11,15 +11,14 @@ export const useHttp = () => {
                 body = JSON.stringify(body)
                 headers['Content-Type'] = 'application/json'
             }
-            const response = await fetch(url, { method, body, headers })
+            let response = await fetch(url, { method, body, headers })
+            let res = await response.json()
+            let resJson = await res['token']
 
             if (response.ok) {
                 let tokens = "test";
-                // let tokens = response.headers.get('Authorization');
-                // alert(response.type);
-                // alert(response.headers.get('Authorization'));
-                localStorage.setItem("tokens", tokens); //добавление токена  в localstorage
-                document.location.href = "http://localhost:3000/";
+                localStorage.setItem("tokens", resJson); //добавление токена  в localstorage
+                // document.location.href = "http://localhost:3000/";
 
 
                 // async function testing1() {
